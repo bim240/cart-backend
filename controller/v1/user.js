@@ -3,12 +3,24 @@ var FormatData = require("../../modules/formatData");
 var Address = require("../../models/address");
 var Cart = require("../../models/cart");
 var Comment = require("../../models/comment");
+var Auth = require("../../modules/auth");
 
 module.exports = {
+  getUserInfo: async (req, res, next) => {
+    try {
+      var userinfo = await User.findById(req.user.userId);
+      var token = req.headers["authorization"] || "";
+      userinfo.token = token;
+      userinfo = FormatData.userData(userinfo);
+      res.status(200).json({ user: userinfo });
+    } catch (error) {
+      next(error);
+    }
+  },
   // update user info
   updateUserInfo: async (req, res, next) => {
     try {
-      // console.log(req.user);
+      // console.log(req.body.user);
       var previousUser = await User.findById(req.user.userId);
       req.body.user.isAdmin = previousUser.isAdmin;
       req.body.user.isBlocked = previousUser.isBlocked;
@@ -16,7 +28,9 @@ module.exports = {
         req.user.userId,
         req.body.user,
         { new: true }
-      );
+      ).populate("cart");
+      const token = await Auth.geneateJWT(updateduser, process.env.SECRET);
+      updateduser.token = token;
       // console.log(updateduser);
       updateduser = FormatData.userData(updateduser);
 
@@ -77,7 +91,7 @@ module.exports = {
       for (let comment in allComments) {
         await Comment.findByIdAndDelete(comment.id);
       }
-      res.status(200).json({ msg: "Account deleted" });
+      res.status(200).json({ user: result });
     } catch (error) {
       next(error);
     }

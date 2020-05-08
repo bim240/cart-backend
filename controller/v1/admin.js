@@ -7,6 +7,7 @@ module.exports = {
   // login
   login: async (req, res, next) => {
     var { email, password } = req.body.user;
+    // console.log("login server", email, password);
     try {
       if (!email || !password) {
         res.status(400).json({ err: "eamil and password required" });
@@ -71,7 +72,7 @@ module.exports = {
   deleteItem: async (req, res, next) => {
     try {
       var deletedItem = await Product.findByIdAndDelete(req.body.item.id);
-      res.status(200).json({ msg: "success" });
+      res.status(200).json({ product: deletedItem });
     } catch (error) {
       next(error);
     }
@@ -93,22 +94,34 @@ module.exports = {
       next(error);
     }
   },
+  // block a user
   blockUser: async (req, res, next) => {
     try {
-      var blockedUser = await User.findByIdAndUpdate(req.body.user.id, {
-        isBlocked: true,
-      });
-      res.status(200).json({ msg: `${blockedUser.username} is now blocked` });
+      var blockedUser = await User.findByIdAndUpdate(
+        req.body.user.id,
+        {
+          isBlocked: true,
+        },
+        { new: true }
+      );
+      var updatedUser = FormatData.adminAllUser(blockedUser);
+      res.status(200).json({ updatedUser });
     } catch (error) {
       next(error);
     }
   },
+  // unblock a user
   unBlockUser: async (req, res, next) => {
     try {
-      var blockedUser = await User.findByIdAndUpdate(req.body.user.id, {
-        isBlocked: false,
-      });
-      res.status(200).json({ msg: `${blockedUser.username} is now unblocked` });
+      var blockedUser = await User.findByIdAndUpdate(
+        req.body.user.id,
+        {
+          isBlocked: false,
+        },
+        { new: true }
+      );
+      var updatedUser = FormatData.adminAllUser(blockedUser);
+      res.status(200).json({ updatedUser });
     } catch (error) {
       next(error);
     }

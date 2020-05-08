@@ -148,7 +148,7 @@ Body
 ```js
 {
 	"user": {
-		"id":"5e9f172fe2c4126db70cb258"
+		"id":"5ea9ab25070bb275f177ad82"
 	}
 }
 ```
@@ -163,7 +163,17 @@ Authorization = token;
 
 ```js
 {
-    "msg": "Jacob2555 is now blocked"
+    "updatedUser": {
+        "id": "5ea9ab25070bb275f177ad82",
+        "username": "Jacob0008",
+        "email": "jake@jake008.jake",
+        "coupons": [],
+        "address": [],
+        "order": [],
+        "fav": [],
+        "cart": "5ea9ab26070bb275f177ad83",
+        "isBlocked": true
+    }
 }
 ```
 
@@ -197,7 +207,17 @@ Authorization = token;
 
 ```js
 {
-    "msg": "Jacob2555 is now unblocked"
+    "updatedUser": {
+        "id": "5ea9ab25070bb275f177ad82",
+        "username": "Jacob0008",
+        "email": "jake@jake008.jake",
+        "coupons": [],
+        "address": [],
+        "order": [],
+        "fav": [],
+        "cart": "5ea9ab26070bb275f177ad83",
+        "isBlocked": false
+    }
 }
 ```
 
@@ -704,7 +724,7 @@ Body
 ```js
 {
 	"item" : {
-		"id":"5ea28db466cdb22611d06d62"
+		"id":"5eabf775079a3a41f3640672"
 	}
 }
 ```
@@ -719,7 +739,39 @@ Authorization = token;
 
 ```js
 {
-    "msg": "success"
+    "product": {
+        "varient": {
+            "genere": [
+                "none"
+            ],
+            "gender": "all",
+            "ageGroup": "all",
+            "weight": 5,
+            "color": "black"
+        },
+        "image": [
+            "String"
+        ],
+        "discription": [
+            "hey this is super confy"
+        ],
+        "review": [],
+        "_id": "5eabf775079a3a41f3640672",
+        "category": "furniture3",
+        "subCatogery": "chair6",
+        "name": "super comfy89",
+        "price": 5000,
+        "brand": "no soo comfy",
+        "stars": 4.5,
+        "seller": "unknown",
+        "soldCount": 200,
+        "discount": 20,
+        "size": "big",
+        "quantity": 900,
+        "createdAt": "2020-05-01T10:18:29.069Z",
+        "updatedAt": "2020-05-01T10:18:29.069Z",
+        "__v": 0
+    }
 }
 ```
 
@@ -852,6 +904,7 @@ Authorization = token;
         "username": "Jacob008",
         "email": "jake@jake007.jake",
         "image": "image url",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWE5YWIyNTA3MGJiMjc1ZjE3N2FkODIiLCJlbWFpbCI6Impha2VAamFrZTAwOC5qYWtlIiwiaWF0IjoxNTg4NzUzMTE0fQ.sUptK-0omGbbxlknwIvyou4Ee4DIMJWDO5TxhCzRwrg",
         "coupons": [],
         "address": [],
         "order": [],
@@ -1318,7 +1371,7 @@ Authorization = token;
 
 Authentication as a user is required
 
-`POST /api/v1/user/address`
+`GET /api/v1/user/address`
 
 Body
 
@@ -1454,7 +1507,7 @@ Body
 ```js
 {
   "address":{
-  	"id":"5ea2af8b8e2065378de36cf4"
+  	"id":"5ea2b0df8e2065378de36cf6"
   }
 }
 ```
@@ -1469,7 +1522,24 @@ Authorization = token;
 
 ```js
 {
-    "msg": "Address deleted"
+    "address": {
+        "address": {
+            "name": "String234",
+            "sonOf": "String234",
+            "mobNumber": 5524234554454,
+            "address1": "String23234",
+            "address2": "String23234",
+            "area": "String32324",
+            "district": "String23234",
+            "state": "String23234",
+            "pinCode": 5245452323224
+        },
+        "_id": "5ea2b0df8e2065378de36cf6",
+        "resident": "5ea2a66978cd3a3191a8dd11",
+        "createdAt": "2020-04-24T09:26:55.878Z",
+        "updatedAt": "2020-04-24T09:26:55.878Z",
+        "__v": 0
+    }
 }
 ```
 
@@ -1778,7 +1848,24 @@ Authorization = token;
 
 ```js
 {
-  msg: "Account deleted";
+    "user": {
+        "coupon": [],
+        "fav": [],
+        "address": [],
+        "reviews": [],
+        "order": [],
+        "_id": "5ea9ab25070bb275f177ad82",
+        "username": "hello3",
+        "email": "jake@jake008.jake",
+        "password": "$2a$10$ECObN.1oY067UkAiO2mhpeFShth15hMHP9hXfNKknJ84W0WqKHsiK",
+        "isAdmin": false,
+        "isBlocked": false,
+        "createdAt": "2020-04-29T16:28:21.994Z",
+        "updatedAt": "2020-05-06T08:23:30.852Z",
+        "__v": 0,
+        "cart": "5ea9ab26070bb275f177ad83",
+        "image": "image url3"
+    }
 }
 ```
 
@@ -1844,6 +1931,152 @@ Header
             "updatedAt": "2020-04-24T06:56:52.400Z",
             "__v": 0
         }
+    ]
+}
+```
+
+---
+
+### 2.Get all item
+
+#### Request
+
+Authentication as a user is not required
+
+`GET /api/v1/items`
+
+Body
+
+```js
+[empty];
+```
+
+Header
+
+```js
+[empty];
+```
+
+#### Response
+
+```js
+{
+    "products": [
+        {
+            "varient": {
+                "genere": [],
+                "gender": "male"
+            },
+            "image": [
+                "https://upload.wikimedia.org/wikipedia/commons/4/4f/To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg"
+            ],
+            "discription": [],
+            "review": [],
+            "_id": "5eae79ba3430630c94a4ce36",
+            "category": "book",
+            "subCatogery": "fiction",
+            "name": "To Kill a Mockingbird",
+            "price": 499,
+            "brand": "kiwi",
+            "stars": 4.5,
+            "seller": "eCart",
+            "quantity": 200,
+            "createdAt": "2020-05-03T07:58:50.336Z",
+            "updatedAt": "2020-05-03T07:58:50.336Z",
+            "__v": 0
+        },
+        {
+            "varient": {
+                "genere": [],
+                "gender": "male"
+            },
+            "image": [
+                "https://cms.qz.com/wp-content/uploads/2017/11/lord-of-the-rings-e1510686480965.jpg?quality=75&strip=all&w=1400"
+            ],
+            "discription": [],
+            "review": [],
+            "_id": "5eae7a2c3430630c94a4ce37",
+            "category": "book",
+            "subCatogery": "fiction",
+            "name": "The Lord of the Rings",
+            "price": 399,
+            "brand": "kiwi",
+            "stars": 4.7,
+            "seller": "eCart",
+            "quantity": 200,
+            "createdAt": "2020-05-03T08:00:44.703Z",
+            "updatedAt": "2020-05-03T08:00:44.703Z",
+            "__v": 0
+        },
+        {
+            "varient": {
+                "genere": [],
+                "gender": "male"
+            },
+            "image": [
+                "https://geaugatheater.org/images/20192020header/gatsy_header.jpg"
+            ],
+            "discription": [],
+            "review": [],
+            "_id": "5eae7ab83430630c94a4ce38",
+            "category": "book",
+            "subCatogery": "fiction",
+            "name": "The Great Gatsby",
+            "price": 799,
+            "brand": "kiwi",
+            "stars": 4.5,
+            "seller": "eCart",
+            "quantity": 200,
+            "createdAt": "2020-05-03T08:03:04.471Z",
+            "updatedAt": "2020-05-03T08:03:04.471Z",
+            "__v": 0
+        },
+        {
+            "varient": {
+                "genere": [],
+                "gender": "male"
+            },
+            "image": [
+                "https://prodimage.images-bn.com/pimages/9781435159631_p2_v3_s550x406.jpg"
+            ],
+            "discription": [],
+            "review": [],
+            "_id": "5eae7b133430630c94a4ce39",
+            "category": "book",
+            "subCatogery": "fiction",
+            "name": "Pride and Prejudice",
+            "price": 899,
+            "brand": "kiwi",
+            "stars": 4.6,
+            "seller": "eCart",
+            "quantity": 200,
+            "createdAt": "2020-05-03T08:04:35.013Z",
+            "updatedAt": "2020-05-03T08:04:35.013Z",
+            "__v": 0
+        },
+        {
+            "varient": {
+                "genere": [],
+                "gender": "male"
+            },
+            "image": [
+                "https://i2.wp.com/www.raptisrarebooks.com/images/44341/anne-frank-the-diary-of-a-young-girl-first-edition.jpg?fit=1000%2C800&ssl=1"
+            ],
+            "discription": [],
+            "review": [],
+            "_id": "5eae7bfe3430630c94a4ce3a",
+            "category": "book",
+            "subCatogery": "fiction",
+            "name": "The Diary Of A Young Girl",
+            "price": 199,
+            "brand": "kiwi",
+            "stars": 4.6,
+            "seller": "eCart",
+            "quantity": 200,
+            "createdAt": "2020-05-03T08:08:30.023Z",
+            "updatedAt": "2020-05-03T08:08:30.023Z",
+            "__v": 0
+        },
     ]
 }
 ```
