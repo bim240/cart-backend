@@ -12,7 +12,7 @@ require("dotenv").config();
 require("./modules/passport");
 // connect to database
 mongoose.connect(
-  "mongodb://localhost/cart",
+  "process.env.DATABASEURL",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
