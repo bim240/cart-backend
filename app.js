@@ -12,7 +12,7 @@ require("dotenv").config();
 require("./modules/passport");
 // connect to database
 mongoose.connect(
-  "process.env.DATABASEURL",
+  process.env.DATABASEURL,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -23,7 +23,7 @@ mongoose.connect(
 );
 
 var app = express();
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

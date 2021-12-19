@@ -10,14 +10,14 @@ router.get("/", function (req, res, next) {
 });
 router.post("/", UserController.register);
 router.post("/login", UserController.login);
-router.get("/auth/github", passport.authenticate("github"));
-router.get(
-  "/auth/github/redirect",
-  passport.authenticate("github", {
-    failureRedirect: "/login",
-    session: false,
-  }),
-  UserController.githubLogin
-);
+// router.get("/auth/github", passport.authenticate("github"));
+// router.get(
+//   "/auth/github/redirect",
+//   passport.authenticate("github", {
+//     failureRedirect: "/login",
+//     session: false,
+//   }),
+//   UserController.githubLogin
+// );
 
 module.exports = router;
